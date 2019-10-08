@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "copy unsuccessful", Toast.LENGTH_LONG).show();
                 return;
                 }
-            }
+        }
+
             glossaryModelList= mDBHelper.getListWord("");
 
             wordadapter=new WordAdapter();
