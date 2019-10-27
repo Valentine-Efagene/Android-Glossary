@@ -9,10 +9,17 @@
     android:background="@android:color/transparent"
 
     >
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/wordtext"
-    android:textSize="20sp"
-    />
+
+    <TextView
+        android:id="@+id/wordtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
 </LinearLayout>

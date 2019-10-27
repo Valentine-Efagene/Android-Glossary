@@ -10,20 +10,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.v.glossaryapplication.DefinitionActivity;
 import com.example.v.glossaryapplication.R;
 import com.example.v.glossaryapplication.utilse.GlossaryModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
+public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> implements Filterable {
 
+    public List<GlossaryModel> dataFixed;
     public List<GlossaryModel> data;
+    public List<GlossaryModel> dataFiltered;
 
-    public WordAdapter(){
-
+    public WordAdapter(List<GlossaryModel> dataFixed){
+        this.dataFixed = dataFixed;
     }
     public  void setData(List<GlossaryModel> data){
         this.data=data;
@@ -55,6 +60,41 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    dataFiltered = dataFixed;
+                } else {
+                    List<GlossaryModel> filteredList = new ArrayList<>();
+                    for (GlossaryModel row : dataFixed) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getWord().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    dataFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = dataFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                data = (ArrayList<GlossaryModel>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
