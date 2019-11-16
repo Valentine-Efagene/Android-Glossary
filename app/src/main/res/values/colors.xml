@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#1B2839</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="grey">#DADADA</color>
     <color name="recycleviewBg">#ECEFF1</color>
 </resources>

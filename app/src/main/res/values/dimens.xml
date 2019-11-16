@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recycleview_elevation">4dp</dimen>
+    <dimen name="searchview_margin_bottom">12dp</dimen>
+    <dimen name="border_radius">5dp</dimen>
+</resources>

@@ -12,15 +12,20 @@
     tools:context=".MainActivity">
 
     <android.support.v7.widget.SearchView
+        android:elevation="@dimen/recycleview_elevation"
+        android:background="@drawable/searchview_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/searchview_margin_bottom"
         app:queryHint="@string/search"
         android:id="@+id/searchView"
         />
 
     <android.support.v7.widget.RecyclerView
+        android:elevation="@dimen/recycleview_elevation"
+        android:background="@drawable/recycleview_background"
+        android:outlineProvider="bounds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rvWord"
